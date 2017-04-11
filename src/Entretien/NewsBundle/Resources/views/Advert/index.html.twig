@@ -1,0 +1,25 @@
+{% extends "EntretienNewsBundle::layout.html.twig" %}
+
+{% block title %}
+  Homepage - {{ parent() }}
+{% endblock %}
+
+{% block entretiennews_body %}
+
+  <h2>List of adverts</h2>
+
+  <ul>
+    {% for advert in listAdverts %}
+      <li>
+        <a href="{{ path('entretien_news_view', {'id': advert.id}) }}">
+          {{ advert.title }}
+        </a>
+        by {{ advert.user.username }}
+        , {{ advert.created|date('d/m/Y') }}
+      </li>
+    {% else %}
+      <li>Any advert</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

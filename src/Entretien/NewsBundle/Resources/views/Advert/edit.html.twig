@@ -1,0 +1,25 @@
+{% extends "EntretienNewsBundle::layout.html.twig" %}
+
+
+{% block title %}
+
+  {{ 'advert.edit.title'|trans }} - {{ parent() }}
+
+{% endblock title %}
+
+{% block entretiennews_body %}
+
+  <h2>{{ 'advert.edit.title'|trans }}</h2>
+
+  <p>{{ 'advert.edit.intro'|trans }} {{ advert.title }}.</p>
+
+  {{ include("EntretienNewsBundle:Advert:form.html.twig") }}
+
+  <p>
+    <a href="{{ path('entretien_news_view', {'id': advert.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      {{ 'advert.edit.back_button'|trans }}
+    </a>
+  </p>
+
+{% endblock entretiennews_body %}

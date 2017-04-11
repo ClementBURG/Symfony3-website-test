@@ -1,0 +1,57 @@
+services:
+    #Providers
+    entretien_news.provider.comment_provider:
+        class: Entretien\NewsBundle\Provider\CommentProvider
+        arguments:
+          - "@doctrine.orm.entity_manager"
+
+    #Listeners
+    entretien_news.listener.comment_listener:
+        class: Entretien\NewsBundle\Listener\CommentListener
+        arguments:
+          - "@entretien_news.provider.comment_provider"
+        tags:
+          - { name: kernel.event_listener, event: entretien_news.post_comment, method: onCommentCreated }
+
+    #Repositories
+    entretien_news.repository.advert:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+          - Entretien\NewsBundle\Entity\Advert
+
+    entretien_news.repository.comment:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+          - Entretien\NewsBundle\Entity\Comment
+
+    #FormTypes
+    entretien_news.type.advert:
+        class: Entretien\NewsBundle\Form\AdvertType
+        tags:
+          - { name: form.type, alias: advert }
+
+    entretien_news.type.comment:
+        class: Entretien\NewsBundle\Form\CommentType
+        tags:
+          - { name: form.type, alias: advert }
+
+    #FormCreate
+    entretien_news.form.advert:
+        class: Symfony\Component\Form\Form
+        factory: ['@form.factory', createNamed]
+        arguments:
+          - advert_name
+          - Entretien\NewsBundle\Form\AdvertType
+          - null
+          - { validation_groups: [Default] }
+
+    entretien_news.form.comment:
+        class: Symfony\Component\Form\Form
+        factory: ['@form.factory', createNamed]
+        arguments:
+          - comment_name
+          - Entretien\NewsBundle\Form\CommentType
+          - null
+          - { validation_groups: [Default] }

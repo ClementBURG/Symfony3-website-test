@@ -1,0 +1,21 @@
+advert:
+    add:
+        title: New advert
+        intro_logged: You are creating a new advert.
+        intro_unlogged: You must be logged in to create a new advert.
+    delete:
+        title: Delete advert
+        intro: You deleted the advert.
+    edit:
+        title: Edit advert
+        intro: You are editing the advert:
+        back_button: Back to advert
+    form:
+        title: Advert title:
+        content: Advert content:
+        save_button: Save
+
+comment:
+    form:
+        content: Comment content:
+        save_button: Comment

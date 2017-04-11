@@ -1,0 +1,21 @@
+advert:
+    add:
+        title: Nouvelle annonce
+        intro_logged: Vous êtes en train de créer une nouvelle annonce.
+        intro_unlogged: Vous devez être connecté pour poster une annonce.
+    delete:
+        title: Supprimer annonce
+        intro: Vous avez supprimé l'annonce.
+    edit:
+        title: Editer annonce
+        intro: Vous êtes en train de modifier l'annonce:
+        back_button: Retour à l'annonce
+    form:
+        title: Titre de l'annonce:
+        content: Contenu:
+        save_button: Enregistrer
+
+comment:
+    form:
+        content: Contenu:
+        save_button: Commenter

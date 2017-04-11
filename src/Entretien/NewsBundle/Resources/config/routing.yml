@@ -1,0 +1,39 @@
+entretien_news_home:
+    path:     /
+    defaults:
+        _controller: EntretienNewsBundle:Advert:index
+    requirements:
+        page: \d*
+
+entretien_news_view:
+    path:     /advert/{id}
+    defaults:
+        _controller: EntretienNewsBundle:Advert:view
+    requirements:
+        id: \d+
+
+entretien_news_add:
+    path:     /add_advert
+    defaults:
+        _controller: EntretienNewsBundle:Advert:add
+
+entretien_news_edit:
+    path:     /edit/{id}
+    defaults:
+        _controller: EntretienNewsBundle:Advert:edit
+    requirements:
+        id: \d+
+
+entretien_news_delete:
+    path:     /delete/{id}
+    defaults:
+        _controller: EntretienNewsBundle:Advert:delete
+    requirements:
+        id: \d+
+
+entretien_news_add_comment:
+    path:    /add_comment/{id}
+    defaults:
+        _controller: EntretienNewsBundle:Comment:addComment
+    requirements:
+        id: \d+

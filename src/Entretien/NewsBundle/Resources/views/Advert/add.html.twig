@@ -1,0 +1,21 @@
+{% extends "EntretienNewsBundle::layout.html.twig" %}
+
+
+{% block title %}
+
+  {{ 'advert.add.title'|trans }} - {{ parent() }}
+
+{% endblock title %}
+
+{% block entretiennews_body %}
+
+  <h2>{{ 'advert.add.title'|trans }}</h2>
+
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<p>{{ 'advert.add.intro_logged'|trans }}</p>
+		{{ include("EntretienNewsBundle:Advert:form.html.twig") }}
+	{% else %}
+		<p>{{ 'advert.add.intro_unlogged'|trans }}</p>
+	{% endif %}
+
+{% endblock entretiennews_body %}
