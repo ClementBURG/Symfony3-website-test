@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% block title %}Entretien.local{% endblock %}</title>
+  <title>{% block title %}{{ 'homepage.title'|trans }}{% endblock %}</title>
 
   {% block stylesheets %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -14,49 +14,47 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-    <div id="navbar" class="navbar-collapse collapse">
-      <div class="navbar-header">
-        <span class="navbar-brand">
-          Emilien T tro bo
-        </span>
-      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <div class="navbar-header">
+          <span class="navbar-brand">{{ 'homepage.title'|trans }}</span>
+        </div>
         <div class="navbar-right navbar-form">
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        Logged in as
-        <a class="btn btn-success" href="{{ path('fos_user_profile_show') }}">
-          {{ app.user.username }}
-        </a>
-        <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}">
-          Logout
-        </a>
-    {% else %}
-        <a class="btn btn-success" href="{{ path('fos_user_security_login') }}">
-          Login
-        </a>
-        <a class="btn btn-success" href="{{ path('fos_user_registration_register') }}">
-          Register
-        </a>
-    {% endif %}
-  </div>
-  </div>
-  </div>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'homepage.logged'|trans }}
+            <a class="btn btn-success" href="{{ path('fos_user_profile_show') }}">
+              {{ app.user.username }}
+            </a>
+            <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}">
+              {{ 'homepage.logout'|trans }}
+            </a>
+          {% else %}
+            <a class="btn btn-success" href="{{ path('fos_user_security_login') }}">
+              {{ 'homepage.login'|trans }}
+            </a>
+            <a class="btn btn-success" href="{{ path('fos_user_registration_register') }}">
+              {{ 'homepage.register'|trans }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
     <div id="header" class="jumbotron">
-      <h1>Entretien.local: a news website</h1>
+      <h1>{{ 'homepage.title'|trans }}: {{ 'homepage.description'|trans }}</h1>
     </div>
 
     <div class="row">
       <div id="menu" class="col-md-3">
-        <h3>Pages</h3>
+        <h4>{{ 'homepage.menu_title'|trans }}</h4>
         <ul class="nav nav-pills nav-stacked">
-          <li><a href="{{ path('entretien_news_home') }}">Homepage</a></li>
-          <li><a href="{{ path('entretien_news_add') }}">Add an advert</a></li>
+          <li><a href="{{ path('entretien_news_home') }}">{{ 'homepage.menu_home'|trans }}</a></li>
+          <li><a href="{{ path('entretien_news_add') }}">{{ 'homepage.menu_add'|trans }}</a></li>
         </ul>
 
-        <h4>Lastest News</h4>
-        {{ render(controller("EntretienNewsBundle:Advert:menu", {'limit': 3})) }}
+        <h4>{{ 'homepage.lastestnews_title'|trans }}</h4>
+        {{ render(controller("EntretienNewsBundle:Advert:menu")) }}
       </div>
       <div id="content" class="col-md-9">
         {% block body %}
@@ -64,7 +62,7 @@
       </div>
     </div>
 
-    <hr>
+    <hr/>
 
     <footer>
       <p>Entretien.local © {{ 'now'|date('Y') }}.</p>

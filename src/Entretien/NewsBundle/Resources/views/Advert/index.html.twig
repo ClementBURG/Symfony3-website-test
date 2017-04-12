@@ -1,12 +1,14 @@
 {% extends "EntretienNewsBundle::layout.html.twig" %}
 
 {% block title %}
-  Homepage - {{ parent() }}
-{% endblock %}
+  {{ 'advert.index.title'|trans }} - {{ parent() }}
+{% endblock title %}
 
 {% block entretiennews_body %}
 
-  <h2>List of adverts</h2>
+  <h2>{{ 'advert.index.list'|trans }}</h2>
+
+  <hr/>
 
   <ul>
     {% for advert in listAdverts %}
@@ -14,12 +16,11 @@
         <a href="{{ path('entretien_news_view', {'id': advert.id}) }}">
           {{ advert.title }}
         </a>
-        by {{ advert.user.username }}
-        , {{ advert.created|date('d/m/Y') }}
+        {{ 'advert.index.by'|trans }} {{ advert.user.username }}, {{ advert.created|date('d/m/Y') }}
       </li>
     {% else %}
-      <li>Any advert</li>
+      <li>{{ 'advert.index.no_advert'|trans }}</li>
     {% endfor %}
   </ul>
 
-{% endblock %}
+{% endblock entretiennews_body %}

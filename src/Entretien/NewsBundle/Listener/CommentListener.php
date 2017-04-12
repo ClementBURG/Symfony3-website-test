@@ -8,20 +8,20 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class CommentListener
 {
-	protected $commentProvider;
+    protected $commentProvider;
 
-	public function __construct(CommentProvider $commentProvider)
-	{
-		$this->commentProvider = $commentProvider;
-	}
+    public function __construct(CommentProvider $commentProvider)
+    {
+        $this->commentProvider = $commentProvider;
+    }
 
-	public function onCommentCreated(GenericEvent $event)
-	{
-		if ($event->getSubject() instanceof CommentInterface) {
-			$comment = $event->getSubject();
-			
-		    $this->commentProvider->updateNbCommentInAdvert($comment);
-		    $this->commentProvider->save($comment);
-		}
-	}
+    public function onCommentCreated(GenericEvent $event)
+    {
+        if ($event->getSubject() instanceof CommentInterface) {
+            $comment = $event->getSubject();
+
+            $this->commentProvider->updateNbCommentInAdvert($comment);
+            $this->commentProvider->save($comment);
+        }
+    }
 }

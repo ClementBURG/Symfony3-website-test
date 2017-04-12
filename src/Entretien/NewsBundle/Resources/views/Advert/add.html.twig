@@ -11,6 +11,8 @@
 
   <h2>{{ 'advert.add.title'|trans }}</h2>
 
+  <hr/>
+
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 		<p>{{ 'advert.add.intro_logged'|trans }}</p>
 		{{ include("EntretienNewsBundle:Advert:form.html.twig") }}

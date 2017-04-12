@@ -1,5 +1,11 @@
 entretien_news:
     resource: "@EntretienNewsBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/
+    requirements:
+            _locale: fr|en
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /{_locale}/
+    requirements:
+            _locale: fr|en

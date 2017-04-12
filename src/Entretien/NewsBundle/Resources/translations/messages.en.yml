@@ -1,3 +1,15 @@
+homepage:
+    title: Entretien.local
+    description: a news web site
+    logged: 'Welcome,'
+    logout: Log out
+    login: Sign in
+    register: Sign up
+    menu_title: Menu
+    menu_home: Homepage
+    menu_add: Add an advert
+    lastestnews_title: Lastest News
+
 advert:
     add:
         title: New advert
@@ -14,6 +26,19 @@ advert:
         title: Advert title:
         content: Advert content:
         save_button: Save
+    index:
+        title: Homepage
+        list: Advert list:
+        by: by
+        no_advert: Any advert
+    view:
+       title: View advert
+       by: by
+       return_button: Return to list
+       edit_button: Edit
+       delete_button: Delete
+       nb_comment: "{0}This advert has any comment.|{1}This advert has %count% comment.|]1,Inf[This advert has %count% comments."
+       form_unlogged: You must be logged in to post a comment.
 
 comment:
     form:

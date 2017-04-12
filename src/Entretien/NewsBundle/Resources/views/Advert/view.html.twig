@@ -1,13 +1,16 @@
 {% extends "EntretienNewsBundle::layout.html.twig" %}
 
 {% block title %}
-  View advert - {{ parent() }}
+  {{ 'advert.view.title'|trans }} - {{ parent() }}
 {% endblock title %}
 
 {% block entretiennews_body %}
 
   <h2>{{ advert.title }}</h2>
-  <i>by {{ advert.user.username }}, {{ advert.created|date('d/m/Y') }}</i>
+  
+  <i>{{ 'advert.view.by'|trans }} {{ advert.user.username }}, {{ advert.created|date('d/m/Y') }}</i>
+
+  <hr/>
 
   <div class="well">
     {{ advert.content }}
@@ -16,20 +19,20 @@
   <p>
     <a href="{{ path('entretien_news_home') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>
-      Back to list
+      {{ 'advert.view.return_button'|trans }}
     </a>
     <a href="{{ path('entretien_news_edit', {'id': advert.id}) }}" class="btn btn-default">
       <i class="glyphicon glyphicon-edit"></i>
-      Edit advert
+      {{ 'advert.view.edit_button'|trans }}
     </a>
     <a href="{{ path('entretien_news_delete', {'id': advert.id}) }}" class="btn btn-danger">
       <i class="glyphicon glyphicon-trash"></i>
-      Delete advert
+      {{ 'advert.view.delete_button'|trans }}
     </a>
   </p>
 
   <div class="well">
-    <p>This advert has <em>{{ advert.nbComment }}</em> comment(s).</p>
+    <p>{{ 'advert.view.nb_comment'|transchoice(advert.nbComment, {'%count%': advert.nbComment}) }}</p>
     <ul>
       {% for comment in listComments %}
       <li>
@@ -47,7 +50,7 @@
     )) }}
   {% else %}
     <div class="well">
-      <p>You must be logged in to comment an advert.</p>
+      <p>{{ 'advert.view.form_unlogged'|trans }}</p>
     </div>
   {% endif %}
 

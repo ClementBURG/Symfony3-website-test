@@ -4,5 +4,5 @@ namespace Entretien\NewsBundle\Model;
 
 interface UserInterface
 {
-	public function getId();
+    public function getId();
 }

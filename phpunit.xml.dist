@@ -14,7 +14,7 @@
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>src/Entretien/NewsBundle/Tests</directory>
+            <directory>src/Entretien/*Bundle/Tests</directory>
         </testsuite>
     </testsuites>
 

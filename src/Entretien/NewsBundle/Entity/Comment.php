@@ -7,7 +7,7 @@ use Entretien\NewsBundle\Model\UserInterface;
 use Entretien\NewsBundle\Model\AdvertInterface;
 
 /**
- * Comment
+ * Comment.
  */
 class Comment implements CommentInterface
 {
@@ -42,7 +42,7 @@ class Comment implements CommentInterface
     private $advert;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -52,7 +52,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
      *
@@ -66,7 +66,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -76,7 +76,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
      *
@@ -90,7 +90,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -100,7 +100,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param \Entretien\NewsBundle\Entity\User $user
      *
@@ -114,7 +114,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get user
+     * Get user.
      *
      * @return \Entretien\NewsBundle\Entity\User
      */
@@ -124,7 +124,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -138,7 +138,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -148,7 +148,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set advert
+     * Set advert.
      *
      * @param \Entretien\NewsBundle\Entity\Advert $advert
      *
@@ -162,7 +162,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get advert
+     * Get advert.
      *
      * @return \Entretien\NewsBundle\Entity\Advert
      */

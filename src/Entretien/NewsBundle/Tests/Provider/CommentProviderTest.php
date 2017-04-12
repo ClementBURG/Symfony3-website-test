@@ -2,68 +2,70 @@
 
 namespace Tests\Provider;
 
-use Entretien\NewsBundle\Entity\Advert;
 use Entretien\NewsBundle\Provider\CommentProvider;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 class CommentProviderTest extends TestCase
 {
-	/**
-	 * @dataProvider incrementIntProvider
-	 */
-	public function testIncrementNbCommentShouldReturnOneMore($init, $expected)
-	{
-		//Arrange
-		$em = $this->createMock(EntityManager::class);
-		$cp = new CommentProvider($em);
-		//Act
-		$res = $cp->incrementNbComment($init);
-		//Assert
-		$this->assertEquals($expected, $res);
-	}
+    private $entityManager;
+    private $commentProvider;
 
-	public function testIncrementNbCommentShouldReturnInteger()
-	{
-		//Arrange
-		$em = $this->createMock(EntityManager::class);
-		$cp = new CommentProvider($em);
-		//Act
-		$res = $cp->incrementNbComment(5);
-		//Assert
-		$this->assertInternalType('integer', $res);
-	}
+    protected function setUp()
+    {
+        $this->entityManager = $this->createMock(EntityManager::class);
+        $this->commentProvider = new CommentProvider($this->entityManager);
+    }
 
-	/**
-	 * @dataProvider incrementNoIntProvider
-	 * @expectedException TypeError
-	 */
-	public function testIncrementNbCommentShouldThrowInvalidArgumentExecption($init)
-	{
-		//Arrange
-		$em = $this->createMock(EntityManager::class);
-		$cp = new CommentProvider($em);
-		//Act
-		$res = $cp->incrementNbComment($init);
-	}
+    protected function tearDown()
+    {
+        $this->entityManager = null;
+        $this->commentProvider = null;
+    }
 
-	public function incrementIntProvider()
-	{
-		return [
-			[5, 6],
-			[7, 8],
-			[0, 1],
-			[10000, 10001]
-		];
-	}
+    /**
+     * @dataProvider incrementIntProvider
+     */
+    public function testIncrementNbCommentShouldReturnOneMore($init, $expected)
+    {
+        $nbComment = $this->commentProvider->incrementNbComment($init);
 
-	public function incrementNoIntProvider()
-	{
-		return [
-			['string'],
-			[NULL],
-			[array('first item' => 1,
-					'second item' => 2)]
-		];
-	}
+        $this->assertSame($expected, $nbComment);
+    }
+
+    public function testIncrementNbCommentShouldReturnInteger()
+    {
+        $nbComment = $this->commentProvider->incrementNbComment(5);
+
+        $this->assertInternalType('integer', $nbComment);
+    }
+
+    /**
+     * @dataProvider incrementNoIntProvider
+     * @expectedException \TypeError
+     */
+    public function testIncrementNbCommentShouldThrowInvalidArgumentExecption($init)
+    {
+        $nbComment = $this->commentProvider->incrementNbComment($init);
+    }
+
+    public function incrementIntProvider()
+    {
+        return [
+            [5, 6],
+            [7, 8],
+            [0, 1],
+            [10000, 10001],
+        ];
+    }
+
+    public function incrementNoIntProvider()
+    {
+        return [
+            ['string'],
+            [null],
+            [array('first item' => 1,
+                    'second item' => 2, )],
+        ];
+    }
 }

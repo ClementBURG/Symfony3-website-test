@@ -6,7 +6,7 @@ use Entretien\NewsBundle\Model\AdvertInterface;
 use Entretien\NewsBundle\Model\UserInterface;
 
 /**
- * Advert
+ * Advert.
  */
 class Advert implements AdvertInterface
 {
@@ -15,7 +15,7 @@ class Advert implements AdvertInterface
      */
     private $id;
 
-   /**
+    /**
      * @var \DateTime
      */
     private $created;
@@ -41,7 +41,7 @@ class Advert implements AdvertInterface
     private $content;
 
     /**
-     * @var integer
+     * @var int
      */
     private $nbComment;
 
@@ -51,7 +51,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -61,7 +61,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
      *
@@ -75,7 +75,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -85,7 +85,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set updated
+     * Set updated.
      *
      * @param \DateTime $updated
      *
@@ -99,7 +99,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get updated
+     * Get updated.
      *
      * @return \DateTime
      */
@@ -109,7 +109,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -123,7 +123,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -133,7 +133,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param \Entretien\NewsBundle\Entity\User $user
      *
@@ -147,7 +147,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get user
+     * Get user.
      *
      * @return \Entretien\NewsBundle\Entity\User
      */
@@ -157,7 +157,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -171,7 +171,7 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -181,9 +181,9 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Set nbComment
+     * Set nbComment.
      *
-     * @param integer $nbComment
+     * @param int $nbComment
      *
      * @return Advert
      */
@@ -195,9 +195,9 @@ class Advert implements AdvertInterface
     }
 
     /**
-     * Get nbComment
+     * Get nbComment.
      *
-     * @return integer
+     * @return int
      */
     public function getNbComment()
     {

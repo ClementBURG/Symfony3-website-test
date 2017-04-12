@@ -1,10 +1,22 @@
+homepage:
+    title: Entretien.local
+    description: un site d'annonces
+    logged: 'Bonjour,'
+    logout: Se déconnecter
+    login: Se connecter
+    register: S'inscrire
+    menu_title: Menu
+    menu_home: Accueil
+    menu_add: Ajouter une annonce
+    lastestnews_title: Dernières annonces
+
 advert:
     add:
         title: Nouvelle annonce
         intro_logged: Vous êtes en train de créer une nouvelle annonce.
         intro_unlogged: Vous devez être connecté pour poster une annonce.
     delete:
-        title: Supprimer annonce
+        title: Supprimer l'annonce
         intro: Vous avez supprimé l'annonce.
     edit:
         title: Editer annonce
@@ -14,6 +26,19 @@ advert:
         title: Titre de l'annonce:
         content: Contenu:
         save_button: Enregistrer
+    index:
+        title: Accueil
+        list: Liste d'annonce:
+        by: par
+        no_advert: Aucune annonce
+    view:
+       title: Détail de l'annonce
+       by: par
+       return_button: Retour à la liste
+       edit_button: Editer
+       delete_button: Supprimer
+       nb_comment: "{0}Il n'y a aucun commentaire.|{1}Il y a %count% commentaire.|]1,Inf[Il y a %count% commentaires."
+       form_unlogged: Vous devez être connecté pour poster un commentaire.
 
 comment:
     form:

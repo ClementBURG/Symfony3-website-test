@@ -4,11 +4,10 @@ namespace Entretien\NewsBundle\Controller;
 
 use Entretien\NewsBundle\Entity\Advert;
 use Entretien\NewsBundle\Entity\Comment;
-use Entretien\NewsBundle\Form\AdvertType;
-use Entretien\NewsBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class AdvertController extends Controller
 {
@@ -19,7 +18,7 @@ class AdvertController extends Controller
         $listAdverts = $this->get('entretien_news.repository.advert')->findOrderByDate();
 
         return $this->render('EntretienNewsBundle:Advert:index.html.twig', array(
-          'listAdverts' => $listAdverts
+          'listAdverts' => $listAdverts,
         ));
     }
 
@@ -28,7 +27,7 @@ class AdvertController extends Controller
         $advert = $this->get('entretien_news.repository.advert')->find($id);
 
         if ($advert === null) {
-            throw new NotFoundHttpException("Advert with id ".$id." does not exist.");
+            throw new NotFoundHttpException('Advert with id '.$id.' does not exist.');
         }
 
         //List of comment
@@ -36,7 +35,7 @@ class AdvertController extends Controller
 
         return $this->render('EntretienNewsBundle:Advert:view.html.twig', array(
             'advert' => $advert,
-            'listComments' => $listComments
+            'listComments' => $listComments,
         ));
     }
 
@@ -52,11 +51,12 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
-      
+
             return $this->redirectToRoute('entretien_news_view', array(
-                'id' => $advert->getId()
+                'id' => $advert->getId(),
             ));
         }
+
         return $this->render('EntretienNewsBundle:Advert:add.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -67,7 +67,12 @@ class AdvertController extends Controller
         $advert = $this->get('entretien_news.repository.advert')->find($id);
 
         if ($advert === null) {
-            throw new NotFoundHttpException("Advert with id ".$id." does not exist.");
+            throw new NotFoundHttpException('Advert with id '.$id.' does not exist.');
+        }
+
+        if (!$this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED') ||
+            $this->getUser()->getUsername() != $advert->getUser()->getUsername()) {
+            throw new AccessDeniedException('You can not modify this advert.');
         }
 
         $form = $this->get('entretien_news.form.advert');
@@ -78,7 +83,7 @@ class AdvertController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('entretien_news_view', array(
-                'id' => $advert->getId()
+                'id' => $advert->getId(),
             ));
         }
 
@@ -93,7 +98,12 @@ class AdvertController extends Controller
         $advert = $this->get('entretien_news.repository.advert')->find($id);
 
         if ($advert === null) {
-            throw new NotFoundHttpException("Advert with id ".$id." does not exist.");
+            throw new NotFoundHttpException('Advert with id '.$id.' does not exist.');
+        }
+
+        if (!$this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED') ||
+            $this->getUser()->getUsername() != $advert->getUser()->getUsername()) {
+            throw new AccessDeniedException('You can not delete this advert.');
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -108,7 +118,7 @@ class AdvertController extends Controller
         $listAdverts = $this->get('entretien_news.repository.advert')->findOrderByDate(self::MENU_ADVERT_LIMIT);
 
         return $this->render('EntretienNewsBundle:Advert:menu.html.twig', array(
-            'listAdverts' => $listAdverts
+            'listAdverts' => $listAdverts,
         ));
     }
 }

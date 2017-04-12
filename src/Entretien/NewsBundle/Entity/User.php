@@ -6,20 +6,19 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Entretien\NewsBundle\Model\UserInterface;
 
 /**
- * User
+ * User.
  */
 class User extends BaseUser implements UserInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {

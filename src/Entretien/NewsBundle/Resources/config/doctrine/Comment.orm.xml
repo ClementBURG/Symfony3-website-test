@@ -15,9 +15,9 @@
       <gedmo:timestampable on="update"/>
     </field>
 
-    <many-to-one
-      field="user"
-      target-entity="User"/>
+    <many-to-one field="user" target-entity="User">
+      <join-column name="user_id" referenced-column-name="id" on-delete="CASCADE"/>
+    </many-to-one>
     <field name="content" type="text" column="content"/>
     <many-to-one field="advert" target-entity="Advert">
       <join-column name="advert_id" referenced-column-name="id" on-delete="CASCADE"/>
